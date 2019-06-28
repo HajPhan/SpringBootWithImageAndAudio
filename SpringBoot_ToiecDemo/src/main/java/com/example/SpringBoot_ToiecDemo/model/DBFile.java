@@ -16,6 +16,8 @@ public class DBFile {
 
     private String fileType;
 
+    private String question;
+
     @Lob
     private byte[] data;
 
@@ -58,5 +60,13 @@ public class DBFile {
 
     public void setData(byte[] data) {
         this.data = data;
+    }
+
+    public String getQuestion() {
+        return question;
+    }
+
+    public void setQuestion(String question) {
+        this.question = question;
     }
 }
