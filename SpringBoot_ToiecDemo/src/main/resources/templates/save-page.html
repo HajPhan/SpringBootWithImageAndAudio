@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <form th:action="@{/save}" th:object="${toeic}" method="post">
+        <table>
+            <tr>
+                <th>Photo:</th>
+                <th>
+                    <input type="file" th:field="*{images}">
+                </th>
+            </tr>
+            <tr>
+                <th>Audio</th>
+                <th>
+                    <input type="file" name="audio">
+                </th>
+            </tr>
+            <tr>
+                <th>
+                    <input type="submit" th:value="Submit">
+                </th>
+            </tr>
+        </table>
+    </form>
+</body>
+</html>

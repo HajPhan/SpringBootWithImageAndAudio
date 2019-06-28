@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Images</th>
+        <th>Audio</th>
+        <th>Question</th>
+    </tr>
+    <th:block th:each="qs : ${question}">
+        <tr>
+            <td th:text="${qs.getId()}"></td>
+            <td th:text="${qs.getImages()}"></td>
+            <td th:text="${qs.getAudio()}"></td>
+            <td th:text="${qs.getQuestion()}"></td>
+        </tr>
+    </th:block>
+</table>
+</body>
+</html>
