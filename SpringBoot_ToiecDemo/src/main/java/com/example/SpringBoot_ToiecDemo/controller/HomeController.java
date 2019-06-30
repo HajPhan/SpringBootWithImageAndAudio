@@ -5,6 +5,8 @@ import com.example.SpringBoot_ToiecDemo.model.QuestionEntity;
 import com.example.SpringBoot_ToiecDemo.payload.UploadFileResponse;
 import com.example.SpringBoot_ToiecDemo.service.DBFileStorageService;
 import com.example.SpringBoot_ToiecDemo.service.QuestionService;
+import com.vaadin.flow.component.html.Image;
+import com.vaadin.flow.server.StreamResource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ByteArrayResource;
 import org.springframework.http.HttpHeaders;
@@ -16,6 +18,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import java.io.ByteArrayInputStream;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -32,7 +35,22 @@ public class HomeController {
     @RequestMapping(value = "/")
     public String home(Model model) {
         model.addAttribute("question", this.questionService.getAllToeic());
-        return "home";
+        return "nicedit";
+    }
+
+    @RequestMapping(value = "/question/{id}", method = RequestMethod.GET)
+    public String getQuestion(Model model, @PathVariable int id){
+        QuestionEntity entity = this.questionService.getToeicById(id);
+        model.addAttribute("toeic",this.questionService.getToeicById(id));
+        return "question-page";
+    }
+
+    @RequestMapping(value = "/file/{id}", method = RequestMethod.GET)
+    private String getFile(Model model, @PathVariable String id){
+        DBFile files = this.dbFileStorageService.getFile(id);
+        Image image = this.dbFileStorageService.generateImage(files);
+        model.addAttribute("file",this.dbFileStorageService.getFile(id));
+        return "file-page";
     }
 
     @RequestMapping(value = "/save", method = RequestMethod.GET)
@@ -82,4 +100,16 @@ public class HomeController {
                 .body(new ByteArrayResource(dbFile.getData()));
     }
 
+
+/*    public Image generateImage(String id){
+
+        StreamResource sr = new StreamResource("file",()->{
+            DBFile dbFile = this.dbFileStorageService.getFile(id);
+            return new ByteArrayInputStream(dbFile.getData());
+        });
+
+        sr.setContentType("image/png");
+        Image image = new Image(sr,"profile-picture");
+        return image;
+    }*/
 }

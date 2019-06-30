@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div th:object="${toeic}" th:text="*{id}"></div>
+    <div th:object="${toeic}" th:text="*{images}"></div>
+    <div th:object="${toeic}" th:text="*{audio}"></div>
+    <div th:object="${toeic}" th:utext="*{question}"></div>
+</body>
+</html>

@@ -6,4 +6,6 @@ public interface QuestionService {
     boolean saveQuestion(QuestionEntity entity);
 
     Iterable<QuestionEntity> getAllToeic();
+
+    QuestionEntity getToeicById(int id);
 }

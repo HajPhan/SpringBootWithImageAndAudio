@@ -21,4 +21,9 @@ public class QuestionServiceImpl implements QuestionService {
     public Iterable<QuestionEntity> getAllToeic() {
         return this.questionRepository.findAll();
     }
+
+    @Override
+    public QuestionEntity getToeicById(int id) {
+        return this.questionRepository.findById(id).get();
+    }
 }

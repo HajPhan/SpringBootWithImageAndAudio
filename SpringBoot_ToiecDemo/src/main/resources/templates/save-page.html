@@ -3,28 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+
+    <script type="text/javascript" src="http://js.nicedit.com/nicEdit-latest.js"></script>
+
+    <script type="text/javascript">
+        //<![CDATA[
+        bkLib.onDomLoaded(function () {
+            nicEditors.allTextAreas()
+        });
+        //]]>
+    </script>
 </head>
 <body>
-    <form th:action="@{/save}" th:object="${toeic}" method="post">
-        <table>
-            <tr>
-                <th>Photo:</th>
-                <th>
-                    <input type="file" th:field="*{images}">
-                </th>
-            </tr>
-            <tr>
-                <th>Audio</th>
-                <th>
-                    <input type="file" name="audio">
-                </th>
-            </tr>
-            <tr>
-                <th>
-                    <input type="submit" th:value="Submit">
-                </th>
-            </tr>
-        </table>
-    </form>
+<form th:action="@{/dosave}" th:object="${toeic}" method="post">
+    <table>
+        <tr>
+            <th>Photo:</th>
+            <th>
+                <input type="file" th:field="*{images}">
+            </th>
+        </tr>
+        <tr>
+            <th>Audio</th>
+            <th>
+                <input type="file" name="audio">
+            </th>
+        </tr>
+        <tr>
+            <th>
+                <input type="submit" th:value="Submit">
+            </th>
+        </tr>
+    </table>
+    <textarea th:field="*{question}" style="width: 80%;">
+        Some Initial Content was in this textarea
+    </textarea>
+
+</form>
 </body>
 </html>

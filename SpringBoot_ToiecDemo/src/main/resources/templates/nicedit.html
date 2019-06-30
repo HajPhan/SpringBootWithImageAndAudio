@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+
+    <meta charset="UTF-8">
+
+    <title>Title</title>
+
+    <script type="text/javascript" src="http://js.nicedit.com/nicEdit-latest.js"></script>
+
+    <script type="text/javascript">
+        //<![CDATA[
+        bkLib.onDomLoaded(function () {
+            nicEditors.allTextAreas()
+        });
+        //]]>
+    </script>
+
+</head>
+<body>
+
+<div id="sample">
+    <!--
+        <h4>
+            First Textarea
+        </h4>
+        <textarea name="area1" cols="40">
+        </textarea><br/>
+    -->
+
+    <form th:action="">
+        <h4>
+            Second Textarea
+        </h4>
+        <textarea name="area2" style="width: 80%;">
+           Some Initial Content was in this textarea
+        </textarea>
+        <br/>
+        <input type="submit" value="Add">
+    </form>
+    <!--    <h4>
+            Third Textarea
+        </h4>
+        <textarea name="area3" style="width: 300px; height: 100px;">
+               HTML content default in textarea
+        </textarea>-->
+</div>
+
+</body>
+</html>

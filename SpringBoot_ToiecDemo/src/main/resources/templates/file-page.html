@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div th:object="${file}" th:utext="*{id}"></div>
+    <div th:object="${file}" th:utext="*{fileName}"></div>
+    <div th:object="${file}" th:utext="*{fileType}"></div>
+</body>
+</html>
